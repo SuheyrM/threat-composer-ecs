@@ -1,1 +1,185 @@
-retry
+Threat Composer ECS Deployment
+
+A DevOps project demonstrating automated container deployment to AWS ECS Fargate using Terraform, Docker, and GitHub Actions CI/CD.
+This project provisions the full infrastructure, builds a Docker container, pushes it to Amazon ECR, and deploys it automatically to ECS behind an Application Load Balancer.
+
+Architecture
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/9a21043e-d8af-4915-9540-b92171d85135" />
+
+
+The application is deployed using the following AWS services:
+
+- Amazon ECS (Fargate) – container orchestration
+- Amazon ECR – container image registry
+- Application Load Balancer – traffic routing
+- Route53 – DNS management
+- AWS ACM – SSL/TLS certificates
+- CloudWatch Logs – container logging
+- Terraform – infrastructure as code
+- GitHub Actions – CI/CD automation
+
+Deployment Flow:
+
+Developer Push → GitHub Actions → Docker Build → ECR Push → ECS Service Update → ALB → Running App
+
+
+## Project Structure
+
+```
+threat-composer-ecs
+│
+├── app/
+│   ├── Dockerfile
+│   ├── package.json
+│   └── server.js
+│
+├── terraform/
+│   ├── bootstrap/
+│   │   ├── main.tf
+│   │   └── outputs.tf
+│   │
+│   └── deployment/
+│       └── environments/
+│           └── dev/
+│               ├── main.tf
+│               ├── variables.tf
+│               └── outputs.tf
+│
+└── .github/workflows/
+    └── deploy.yml
+```
+Docker Container
+
+The application is packaged as a lightweight Node.js container.
+
+Key Docker configuration:
+```
+FROM node:20-alpine
+WORKDIR /app
+COPY package.json .
+COPY server.js .
+EXPOSE 3000
+CMD ["npm","start"]
+```
+The container image is built locally and pushed to Amazon ECR via GitHub Actions.
+<img width="564" height="482" alt="docker - threat -composer" src="https://github.com/user-attachments/assets/ef79974b-3250-4303-9874-b2df24211847" />
+
+
+CI/CD Pipeline
+
+GitHub Actions automates deployment.
+
+Pipeline steps:
+
+1.Checkout repository
+
+2.Authenticate to AWS
+
+3. Build Docker image
+
+4. Push image to Amazon ECR
+
+5. Trigger ECS service update
+
+
+Workflow trigger:
+
+on:
+  push:
+    branches:
+      - main
+
+This enables automatic deployments on every push.
+
+Application Deployment
+
+The application runs on AWS ECS Fargate behind an Application Load Balancer.
+
+Example output from the running application:
+
+Threat Composer ECS App Running
+```
+User → ALB → ECS Service → Fargate Container → Node App
+```
+Terraform Infrastructure
+
+Terraform provisions the following resources:
+
+- VPC
+
+- Public & Private Subnets
+
+- Internet Gateway
+
+- NAT Gateway
+
+- Security Groups
+
+- ECS Cluste
+
+- ECS Task Definition
+
+- ECS Service
+
+- Application Load Balancer
+
+- Target Group
+
+- Route53 DNS
+
+- ACM SSL certificate
+
+- CloudWatch Logs
+
+- ECR repository
+
+<img width="564" height="482" alt="threat composer EC2 App " src="https://github.com/user-attachments/assets/aa0f53a5-1532-41af-b02c-c1c4674ea929" />
+
+Terraform also configures:
+
+- Remote state in S3
+
+- State locking using DynamoD
+  
+- Deployment
+
+Clone the repository:
+
+git clone https://github.com/SuheyrM/threat-composer-ecs.git
+
+Initialize Terraform:
+```
+terraform init
+```
+Deploy infrastructure:
+
+```
+terraform apply
+```
+Push application code to trigger CI/CD deployment.
+
+Destroy Infrastructure
+
+To remove all AWS resources:
+
+```
+terraform destroy
+```
+This project demonstrates full infrastructure lifecycle management.
+
+Screenshots
+
+<img width="1237" height="612" alt="Add GitHub Actions ECS deployment pipeline" src="https://github.com/user-attachments/assets/95520693-08dc-49ef-bcd1-60add7121c50" />
+
+Future Improvements
+
+Add Kubernetes (EKS) deployment
+
+Implement blue/green deployments
+
+Add container vulnerability scanning
+
+Integrate monitoring with Prometheus/Grafana
+
+Add automated security scanning in CI/CD
+
