@@ -127,6 +127,7 @@ Screenshot of the GitHub Actions workflow that builds the Docker image and deplo
 
 <img width="1237" height="612" alt="GitHub Actions ECS Deployment Pipeline" src="https://github.com/user-attachments/assets/95520693-08dc-49ef-bcd1-60add7121c50" />
 
+---
 
 ## Application Deployment
 
@@ -170,7 +171,7 @@ Terraform provisions the following resources:
 
 - ECR repository
 
-
+---
 Terraform also configures:
 
 - Remote state in S3
@@ -202,6 +203,8 @@ To remove all AWS resources:
 terraform destroy
 ```
 This project demonstrates full infrastructure lifecycle management.
+
+---
 
 ## Future Improvements
 
