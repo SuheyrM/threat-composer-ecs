@@ -1,12 +1,13 @@
 ## Threat Composer ECS Deployment
-
-This project demonstrates a fully automated DevOps pipeline that deploys a containerized Node.js application to **AWS ECS Fargate** using **Terraform, Docker, and GitHub Actions**.
-Terraform provisions the AWS infrastructure, Docker packages the application, and GitHub Actions builds the image, pushes it to **Amazon ECR**, and deploys it automatically to ECS behind an **Application Load Balancer**.
-
 ![AWS](https://img.shields.io/badge/AWS-ECS-orange)
 ![Terraform](https://img.shields.io/badge/Terraform-IaC-purple)
 ![Docker](https://img.shields.io/badge/Docker-Container-blue)
 ![GitHub Actions](https://img.shields.io/badge/CI/CD-GitHub_Actions-black)
+
+This project demonstrates a fully automated DevOps pipeline that deploys a containerized Node.js application to **AWS ECS Fargate** using **Terraform, Docker, and GitHub Actions**.
+Terraform provisions the AWS infrastructure, Docker packages the application, and GitHub Actions builds the image, pushes it to **Amazon ECR**, and deploys it automatically to ECS behind an **Application Load Balancer**.
+
+
 
 ## Key Features
 
