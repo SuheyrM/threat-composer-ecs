@@ -1,9 +1,9 @@
-Threat Composer ECS Deployment
+## Threat Composer ECS Deployment
 
 A DevOps project demonstrating automated container deployment to AWS ECS Fargate using Terraform, Docker, and GitHub Actions CI/CD.
 This project provisions the full infrastructure, builds a Docker container, pushes it to Amazon ECR, and deploys it automatically to ECS behind an Application Load Balancer.
 
-Architecture
+## Architecture
 <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/9a21043e-d8af-4915-9540-b92171d85135" />
 
 
@@ -48,7 +48,7 @@ threat-composer-ecs
 └── .github/workflows/
     └── deploy.yml
 ```
-Docker Container
+## Docker Container
 
 The application is packaged as a lightweight Node.js container.
 
@@ -65,7 +65,7 @@ The container image is built locally and pushed to Amazon ECR via GitHub Actions
 <img width="564" height="482" alt="docker - threat -composer" src="https://github.com/user-attachments/assets/ef79974b-3250-4303-9874-b2df24211847" />
 
 
-CI/CD Pipeline
+## CI/CD Pipeline
 
 GitHub Actions automates deployment.
 
@@ -91,7 +91,7 @@ on:
 
 This enables automatic deployments on every push.
 
-Application Deployment
+## Application Deployment
 
 The application runs on AWS ECS Fargate behind an Application Load Balancer.
 
@@ -101,7 +101,7 @@ Threat Composer ECS App Running
 ```
 User → ALB → ECS Service → Fargate Container → Node App
 ```
-Terraform Infrastructure
+## Terraform Infrastructure
 
 Terraform provisions the following resources:
 
@@ -143,7 +143,7 @@ Terraform also configures:
   
 - Deployment
 
-Clone the repository:
+## Clone the repository:
 
 git clone https://github.com/SuheyrM/threat-composer-ecs.git
 
@@ -167,11 +167,11 @@ terraform destroy
 ```
 This project demonstrates full infrastructure lifecycle management.
 
-Screenshots
+## Screenshots
 
 <img width="1237" height="612" alt="Add GitHub Actions ECS deployment pipeline" src="https://github.com/user-attachments/assets/95520693-08dc-49ef-bcd1-60add7121c50" />
 
-Future Improvements
+## Future Improvements
 
 Add Kubernetes (EKS) deployment
 
