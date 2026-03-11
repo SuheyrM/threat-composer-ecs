@@ -140,6 +140,7 @@ Threat Composer ECS App Running
 ```
 User → ALB → ECS Service → Fargate Container → Node App
 ```
+
 ## Terraform Infrastructure
 
 Terraform provisions the following resources:
@@ -172,7 +173,6 @@ Terraform provisions the following resources:
 
 - ECR repository
 
----
 Terraform also configures:
 
 - Remote state in S3
@@ -181,6 +181,8 @@ Terraform also configures:
   
 - Deployment
 
+---
+  
 ## Clone the repository:
 
 git clone https://github.com/SuheyrM/threat-composer-ecs.git
