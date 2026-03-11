@@ -1,8 +1,22 @@
 ## Threat Composer ECS Deployment
 
 This project demonstrates a fully automated DevOps pipeline that deploys a containerized Node.js application to **AWS ECS Fargate** using **Terraform, Docker, and GitHub Actions**.
+Terraform provisions the AWS infrastructure, Docker packages the application, and GitHub Actions builds the image, pushes it to **Amazon ECR**, and deploys it automatically to ECS behind an **Application Load Balancer**.
 
-The infrastructure is provisioned with Terraform, the application is packaged as a Docker container, and GitHub Actions builds the image, pushes it to **Amazon ECR**, and deploys it automatically to ECS behind an **Application Load Balancer**.
+![AWS](https://img.shields.io/badge/AWS-ECS-orange)
+![Terraform](https://img.shields.io/badge/Terraform-IaC-purple)
+![Docker](https://img.shields.io/badge/Docker-Container-blue)
+![GitHub Actions](https://img.shields.io/badge/CI/CD-GitHub_Actions-black)
+
+## Key Features
+
+- Infrastructure as Code using **Terraform**
+- Containerized Node.js application using **Docker**
+- Automated **CI/CD pipeline** with GitHub Actions
+- Secure container storage using **Amazon ECR**
+- Highly available deployment on **AWS ECS Fargate**
+- Application exposed through **AWS Application Load Balancer**
+- Automated infrastructure teardown with Terraform
 
 ## Architecture
 Diagram:
@@ -50,6 +64,14 @@ threat-composer-ecs
 └── .github/workflows/
     └── deploy.yml
 ```
+### Deployed Application
+
+Screenshot of the deployed app.
+
+<img width="564" height="482" alt="Threat Composer ECS App Running" src="https://github.com/user-attachments/assets/aa0f53a5-1532-41af-b02c-c1c4674ea929" />
+
+---
+
 ## Docker Container
 
 The application is packaged as a lightweight Node.js container.
@@ -65,6 +87,13 @@ CMD ["npm","start"]
 ```
 The container image is built locally and pushed to Amazon ECR via GitHub Actions.
 
+### Docker Image
+
+Screenshot of the Docker image used to run the application.
+
+<img width="564" height="482" alt="Docker Threat Composer Image" src="https://github.com/user-attachments/assets/ef79974b-3250-4303-9874-b2df24211847" />
+
+---
 
 ## CI/CD Pipeline
 
@@ -91,6 +120,13 @@ on:
       - main
 
 This enables automatic deployments on every push.
+
+### CI/CD Pipeline
+
+Screenshot of the GitHub Actions workflow that builds the Docker image and deploys it to AWS ECS.
+
+<img width="1237" height="612" alt="GitHub Actions ECS Deployment Pipeline" src="https://github.com/user-attachments/assets/95520693-08dc-49ef-bcd1-60add7121c50" />
+
 
 ## Application Deployment
 
@@ -166,31 +202,6 @@ To remove all AWS resources:
 terraform destroy
 ```
 This project demonstrates full infrastructure lifecycle management.
-
-## Screenshots
-## Screenshots
-
-### Deployed Application
-
-Screenshot of the deployed app.
-
-<img width="564" height="482" alt="Threat Composer ECS App Running" src="https://github.com/user-attachments/assets/aa0f53a5-1532-41af-b02c-c1c4674ea929" />
-
----
-
-### Docker Image
-
-Screenshot of the Docker image used to run the application.
-
-<img width="564" height="482" alt="Docker Threat Composer Image" src="https://github.com/user-attachments/assets/ef79974b-3250-4303-9874-b2df24211847" />
-
----
-
-### CI/CD Pipeline
-
-Screenshot of the GitHub Actions workflow that builds the Docker image and deploys it to AWS ECS.
-
-<img width="1237" height="612" alt="GitHub Actions ECS Deployment Pipeline" src="https://github.com/user-attachments/assets/95520693-08dc-49ef-bcd1-60add7121c50" />
 
 ## Future Improvements
 
